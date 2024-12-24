@@ -18,10 +18,8 @@ public class OrderPartValidationService extends OrderPartValidationServiceGrpc.O
     public void validatePart(OrderPartValidationProto.PartValidationRequest request,
                              StreamObserver<OrderPartValidationProto.PartValidationResponse> responseObserver) {
         try {
-            // Преобразуем строковый идентификатор в UUID
             UUID partId = UUID.fromString(request.getPartId());
 
-            // Выполняем поиск детали
             Part part = partRepository.findById(partId);
 
             if (part == null) {
