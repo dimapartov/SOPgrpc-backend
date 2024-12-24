@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.example.sop.grpc.generated";
+option java_outer_classname = "OrderPartValidationProto";
+
+service OrderPartValidationService {
+  rpc ValidatePart (PartValidationRequest) returns (PartValidationResponse);
+}
+
+message PartValidationRequest {
+  string part_id = 1;
+  int32 quantity = 2;
+}
+
+message PartValidationResponse {
+  bool is_valid = 1;
+  string error_message = 2;
+}
